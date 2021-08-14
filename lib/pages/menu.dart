@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:githubstatus/pages/commits.dart';
+import 'package:githubstatus/pages/repositories.dart';
 import 'package:githubstatus/pages/widgets/appbar.dart';
 import 'package:githubstatus/pages/widgets/themeF.dart';
 
@@ -25,8 +27,16 @@ class _MenuState extends State<Menu> {
               children: [
                 TableRow(
                   children: [
-                    _SigleCard( color: AppColor.principalColor, icon: Icons.list,text: 'Repositories' ),
-                    _SigleCard( color: AppColor.thirdColor, icon: Icons.upload, text: 'Commits' ),
+                    InkWell(onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:(context)=>Repositories()));
+                      },child: _SigleCard( color: AppColor.principalColor, icon: Icons.list,text: 'Repositories' )
+                    ),
+                    InkWell(
+                      onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:(context)=>Commits()));
+                      },
+                      child: _SigleCard( color: AppColor.thirdColor, icon: Icons.upload, text: 'Commits' )
+                    ),
                   ]
                 ),
               ],
