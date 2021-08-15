@@ -5,7 +5,7 @@ class ApiGitHub{
   final String _urlNode = 'http://192.168.0.7:3000/api/';
 
   getRepos() async{
-    final url = 'users/GermanRuelasCastillo/repos';
+    const url = 'users/GermanRuelasCastillo/repos';
     try {
       return await http.get(Uri.parse(_url + url));
     } catch (e) {
@@ -26,7 +26,7 @@ class ApiGitHub{
   // TODO: could implement a conditional in only two functions, but for test reasons will be in four functions
 
   getReposNode() async{
-    final url = 'getRepos';
+    const url = 'getRepos';
     try {
       return await http.get(Uri.parse(_urlNode + url));
     } catch (e) {
