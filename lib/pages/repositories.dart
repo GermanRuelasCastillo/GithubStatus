@@ -62,10 +62,9 @@ class _RepositoriesState extends State<Repositories> {
   }
 
   _getRepositories() async {
-    var p =  this.widget.type == 'flutter' ? await ApiGitHub().getRepos() : await ApiGitHub().getReposNode();
-    print(p);
+    var p = this.widget.type == 'flutter' ? await ApiGitHub().getRepos() : await ApiGitHub().getReposNode();
     if(p != null){
-      var body = this.widget.type == 'flutter' ? json.decode(p.body) : json.decode(p.body);
+      var body = json.decode(p.body);
       setState(() {
         repositories.addAll(body);
       });

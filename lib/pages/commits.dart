@@ -60,10 +60,16 @@ class _CommitsState extends State<Commits> {
   }
 
   _getCommits() async {
-    var p = await ApiGitHub().getCommits('GithubStatus', 'master');
+    var p =this.widget.type == 'flutter' ?  await ApiGitHub().getCommits('GithubStatus', 'master') : await ApiGitHub().getCommitsNode('GithubStatus', 'master');
     var body = json.decode(p.body);
-    setState(() {
-      commits.addAll(body);
-    });
+    if(p != null){
+      setState(() {
+        commits.addAll(body);
+      });
+    }else{
+      setState(() {
+        displayError = true;
+      });
+    }
   }
 }
