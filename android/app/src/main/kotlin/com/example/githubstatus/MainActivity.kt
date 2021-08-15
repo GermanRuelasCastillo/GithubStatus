@@ -1,4 +1,4 @@
-package com.example.githubstatus
+package com.germanrue.githubstatus
 
 import io.flutter.embedding.android.FlutterActivity
 

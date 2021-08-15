@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:githubstatus/pages/widgets/themeF.dart';
 
 class Repository extends StatefulWidget {
@@ -32,7 +31,7 @@ class _RepositoryState extends State<Repository> {
                   children: [
                     FadeInImage.assetNetwork(image:this.widget.repository['owner']['avatar_url'],placeholder:'assets/github.png',height: 30,),
                     SizedBox( height: 10 ),
-                    Text( this.widget.repository['full_name'] , style: TextStyle( color: AppColor.principalColor, fontSize: 18 ),),
+                    Text( this.widget.repository['full_name'] , style: TextStyle( color: AppColor.principalColor, fontSize: 18 ),textAlign: TextAlign.center),
                     SizedBox( height: 10 ),
                     Text(this.widget.repository['description'] != null ? this.widget.repository['description'] : '',maxLines: 3,)
                   ],

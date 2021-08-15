@@ -7,12 +7,15 @@ import 'package:githubstatus/pages/widgets/themeF.dart';
 import 'package:githubstatus/services/api.dart';
 
 class Repositories extends StatefulWidget {
+  final type;
+  const Repositories({this.type});
   @override
   _RepositoriesState createState() => _RepositoriesState();
 }
 
 class _RepositoriesState extends State<Repositories> {
   var repositories = [];
+  bool displayError = false;
   @override
   void initState() {
     super.initState();
@@ -25,7 +28,9 @@ class _RepositoriesState extends State<Repositories> {
         appBar: AppBar(),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child:
+        displayError == false ?
+        SingleChildScrollView(
           child: Column(
             children: [
               Padding(
@@ -42,18 +47,32 @@ class _RepositoriesState extends State<Repositories> {
               )
             ],
           ),
-        ),
+        ) :
+            Container(
+              height: 300,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/error.jpg'),
+                fit: BoxFit.fill,
+              ),
+            ))
       ),
     );
   }
 
-
-
   _getRepositories() async {
-    var p = await ApiGitHub().getRepos();
-    var body = json.decode(p.body);
-    setState(() {
-      repositories.addAll(body);
-    });
+    var p =  this.widget.type == 'flutter' ? await ApiGitHub().getRepos() : await ApiGitHub().getReposNode();
+    print(p);
+    if(p != null){
+      var body = this.widget.type == 'flutter' ? json.decode(p.body) : json.decode(p.body);
+      setState(() {
+        repositories.addAll(body);
+      });
+    }else{
+      setState(() {
+        displayError = true;
+      });
+    }
   }
 }

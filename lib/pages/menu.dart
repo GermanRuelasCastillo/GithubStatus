@@ -28,17 +28,31 @@ class _MenuState extends State<Menu> {
                 TableRow(
                   children: [
                     InkWell(onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder:(context)=>Repositories()));
+                      Navigator.push(context, MaterialPageRoute(builder:(context)=>Repositories(type:'flutter')));
                       },child: _SigleCard( color: AppColor.principalColor, icon: Icons.list,text: 'Repositories' )
                     ),
                     InkWell(
                       onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder:(context)=>Commits()));
+                      Navigator.push(context, MaterialPageRoute(builder:(context)=>Commits(type: 'flutter',)));
                       },
                       child: _SigleCard( color: AppColor.thirdColor, icon: Icons.upload, text: 'Commits' )
                     ),
                   ]
                 ),
+                TableRow(
+                  children: [
+                    InkWell(onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:(context)=>Repositories(type:'node')));
+                      },child: _SigleCard( color: AppColor.principalColor, icon: Icons.list,text: 'Repositories + Node' )
+                    ),
+                    InkWell(
+                      onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder:(context)=>Commits(type: 'node',)));
+                      },
+                      child: _SigleCard( color: AppColor.thirdColor, icon: Icons.upload, text: 'Commits + Node' )
+                    ),
+                  ]
+                )
               ],
             )
           ]

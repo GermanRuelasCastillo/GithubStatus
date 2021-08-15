@@ -7,13 +7,15 @@ import 'package:githubstatus/pages/widgets/themeF.dart';
 import 'package:githubstatus/services/api.dart';
 
 class Commits extends StatefulWidget {
-
+  final type;
+  const Commits({this.type});
   @override
   _CommitsState createState() => _CommitsState();
 }
 
 class _CommitsState extends State<Commits> {
   var commits = [];
+  bool displayError = false;
   @override
   void initState() {
     super.initState();
@@ -26,7 +28,8 @@ class _CommitsState extends State<Commits> {
         appBar: AppBar(),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child:
+        displayError == false ? SingleChildScrollView(
           child: Column(
             children: [
               Padding(
@@ -43,7 +46,15 @@ class _CommitsState extends State<Commits> {
               )
             ],
           ),
-        ),
+        ) : Container(
+              height: 300,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/error.jpg'),
+                fit: BoxFit.fill,
+              ),
+            )),
       ),
     );
   }

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.githubstatus">
+    package="com.germanrue.githubstatus">
    <application
         android:label="githubstatus"
         android:icon="@mipmap/ic_launcher">

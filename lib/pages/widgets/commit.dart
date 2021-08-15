@@ -31,7 +31,6 @@ class _CommitState extends State<Commit> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // FadeInImage.assetNetwork(image:this.widget.commit['owner']['avatar_url'],placeholder:'assets/github.png',height: 30,),
                       Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
